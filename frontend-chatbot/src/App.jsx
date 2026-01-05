@@ -19,9 +19,12 @@ export default function App() {
     setChat((prev) => [...prev, { role: "user", text: userMessage }]);
 
     try {
-      const res = await axios.post("http://localhost:3000/api/chat", {
-        prompt: userMessage,
-      });
+      const res = await axios.post(
+        "https://backend-chatbot-ai-gemini.vercel.app/api/chat",
+        {
+          prompt: userMessage,
+        }
+      );
 
       setChat((prev) => [...prev, { role: "ai", text: res.data.reply }]);
     } catch (err) {
